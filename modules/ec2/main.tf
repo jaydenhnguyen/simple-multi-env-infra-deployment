@@ -43,28 +43,11 @@ resource "aws_instance" "private_vm" {
   subnet_id              = var.private_subnet_ids[count.index]
   vpc_security_group_ids = [aws_security_group.private_sg.id]
 
-  user_data = var.environment == "nonprod" ? <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y httpd
-              systemctl enable httpd
-              systemctl start httpd
-
-              PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
-
-              cat <<HTML > /var/www/html/index.html
-              <html>
-                <head><title>${var.environment} VM</title></head>
-                <body>
-                  <h1>${var.owner_name}</h1>
-                  <p>Environment: ${var.environment}</p>
-                  <p>Private IP: $PRIVATE_IP</p>
-                  <p>VM: ${count.index + 1}</p>
-                </body>
-              </html>
-              HTML
-              EOF
-    : null
+  user_data = var.environment == "nonprod" ? templatefile("${path.module}/httpd_user_data.sh.tpl", {
+    environment = var.environment
+    owner_name  = var.owner_name
+    vm_number   = count.index + 1
+  }) : null
 
   tags = {
     Name        = "${var.project_name}-${var.environment}-vm${count.index + 1}"
