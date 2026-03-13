@@ -1,38 +1,52 @@
-### Terraform files
-
-.terraform
+# ===============================
+# Terraform State Files
+# ===============================
 *.tfstate
-*.tfstate.backup
-terraform.tfvars
+*.tfstate.*
 
-### JetBrains template
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# Crash log files
+crash.log
 
-# CMake
-cmake-build-*/
+# Terraform lock file (optional: many teams keep it, but safe to ignore for student projects)
+.terraform.lock.hcl
 
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+# Terraform working directory
+.terraform/
 
-# File-based project format
-*.iws
+# ===============================
+# Variable files (may contain secrets)
+# ===============================
+*.tfvars
+*.tfvars.json
 
-# IntelliJ
-out/
+# Allow example variable files
+!*.example.tfvars
 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
+# ===============================
+# CLI configuration files
+# ===============================
+.terraformrc
+terraform.rc
 
-# JIRA plugin
-atlassian-ide-plugin.xml
+# ===============================
+# Sensitive override files
+# ===============================
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+# ===============================
+# OS / Editor files
+# ===============================
+.DS_Store
+Thumbs.db
 
-.idea
-__pycache__
-__pycache__/*
+# VSCode
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Logs
+*.log

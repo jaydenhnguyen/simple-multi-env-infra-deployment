@@ -1,0 +1,18 @@
+aws_region =
+
+project_name =
+environment  =
+
+vpc_cidr =
+
+public_subnet_cidrs = []
+
+private_subnet_cidrs = []
+
+availability_zones = []
+
+ami_id        = ""
+instance_type = "t2.micro"
+key_name      = ""
+admin_cidr    = ""
+owner_name    = ""
