@@ -16,6 +16,7 @@ module "bastion" {
   environment      = var.environment
   vpc_id           = module.network.vpc_id
   public_subnet_id = module.network.public_subnet_ids[1]
+
   ami_id           = var.ami_id
   instance_type    = var.instance_type
   key_name         = var.key_name
