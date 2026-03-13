@@ -4,7 +4,7 @@ resource "aws_security_group" "this" {
   vpc_id = var.vpc_id
 
   ingress {
-    description = "Allow SSH from admin's IP"
+    description = "Allow SSH from admin IP"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
