@@ -12,11 +12,11 @@ resource "aws_security_group" "private_sg" {
   }
 
   ingress {
-    description = "Allow HTTP from admin IP"
+    description = "Allow HTTP from bastion host"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [var.admin_ip]
+    security_groups = [var.bastion_security_group_id]
   }
 
   egress {
