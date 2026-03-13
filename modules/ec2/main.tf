@@ -16,7 +16,7 @@ resource "aws_security_group" "private_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [var.admin_cidr]
+    cidr_blocks = [var.admin_ip]
   }
 
   egress {

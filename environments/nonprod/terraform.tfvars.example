@@ -14,5 +14,5 @@ availability_zones = []
 ami_id        = ""
 instance_type = "t2.micro"
 key_name      = ""
-admin_cidr    = ""
+admin_ip    = ""
 owner_name    = ""

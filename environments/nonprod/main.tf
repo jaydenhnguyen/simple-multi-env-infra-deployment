@@ -20,7 +20,7 @@ module "bastion" {
   ami_id           = var.ami_id
   instance_type    = var.instance_type
   key_name         = var.key_name
-  admin_cidr       = var.admin_cidr
+  admin_ip       = var.admin_ip
 }
 
 module "ec2" {
@@ -35,6 +35,6 @@ module "ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name
-  admin_cidr    = var.admin_cidr
+  admin_ip    = var.admin_ip
   owner_name    = var.owner_name
 }

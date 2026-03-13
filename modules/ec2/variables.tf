@@ -39,7 +39,7 @@ variable "key_name" {
   type        = string
 }
 
-variable "admin_cidr" {
+variable "admin_ip" {
   description = "CIDR block allowed to SSH into bastion host"
   type        = string
 }
