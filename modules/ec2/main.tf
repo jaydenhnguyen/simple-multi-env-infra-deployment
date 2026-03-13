@@ -43,7 +43,7 @@ resource "aws_instance" "private_vm" {
   subnet_id              = var.private_subnet_ids[count.index]
   vpc_security_group_ids = [aws_security_group.private_sg.id]
 
-  user_data = var.environment == "nonprod" ? templatefile("${path.module}/httpd_user_data.sh.tpl", {
+  user_data = var.environment == "nonprod" ? templatefile("${path.module}/nonprod-userdata.sh.tpl", {
     environment = var.environment
     owner_name  = var.owner_name
     vm_number   = count.index + 1
