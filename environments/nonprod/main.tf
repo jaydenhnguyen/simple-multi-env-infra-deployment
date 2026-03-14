@@ -40,4 +40,17 @@ module "ec2" {
   instance_type = var.instance_type
   key_name      = var.key_name
   owner_name    = var.owner_name
+
+  user_data_list = [
+    templatefile("${path.module}/templates/nonprod-userdata.sh.tpl", {
+      environment = var.environment
+      owner_name  = var.owner_name
+      vm_number   = 1
+    }),
+    templatefile("${path.module}/templates/nonprod-userdata.sh.tpl", {
+      environment = var.environment
+      owner_name  = var.owner_name
+      vm_number   = 2
+    })
+  ]
 }

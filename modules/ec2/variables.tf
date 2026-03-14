@@ -39,7 +39,7 @@ variable "key_name" {
   type        = string
 }
 
-variable "owner_name" {
-  description = "Your name to print on the Apache page"
-  type        = string
+variable "user_data_list" {
+  type    = list(any)
+  default = []
 }

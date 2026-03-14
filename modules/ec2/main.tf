@@ -23,6 +23,18 @@ resource "aws_security_group" "private_sg" {
     }
   }
 
+  dynamic "ingress" {
+    for_each = var.environment == "prod" ? [1] : []
+
+    content {
+      description = "Allow MySQL from bastion host"
+      from_port   = 3306
+      to_port     = 3306
+      protocol    = "tcp"
+      cidr_blocks = ["${var.bastion_private_ip}/32"]
+    }
+  }
+
   egress {
     description = "Allow all outbound traffic"
     from_port   = 0
@@ -47,11 +59,7 @@ resource "aws_instance" "private_vm" {
   subnet_id              = var.private_subnet_ids[count.index]
   vpc_security_group_ids = [aws_security_group.private_sg.id]
 
-  user_data = var.environment == "nonprod" ? templatefile("${path.module}/nonprod-userdata.sh.tpl", {
-    environment = var.environment
-    owner_name  = var.owner_name
-    vm_number   = count.index + 1
-  }) : null
+  user_data = length(var.user_data_list) > count.index ? var.user_data_list[count.index] : null
 
   tags = {
     Name        = "${var.project_name}-${var.environment}-vm${count.index + 1}"

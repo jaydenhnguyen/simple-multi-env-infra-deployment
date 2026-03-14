@@ -18,12 +18,11 @@ module "network" {
   project_name         = var.project_name
   environment          = var.environment
   vpc_cidr             = var.vpc_cidr
-  public_subnet_cidrs  = []
+  public_subnet_cidrs  = var.public_subnet_cidrs
   private_subnet_cidrs = var.private_subnet_cidrs
   availability_zones   = var.availability_zones
 
-  create_internet_gateway = false
-  create_nat_gateway      = false
+  create_nat_gateway      = var.create_nat_gateway
 }
 
 module "ec2" {
@@ -38,6 +37,11 @@ module "ec2" {
   instance_type = var.instance_type
   key_name      = var.key_name
   owner_name    = var.owner_name
+
+  user_data_list = [
+    "",
+    templatefile("${path.module}/templates/prod-userdata.sh.tpl", {})
+  ]
 
   bastion_private_ip = data.terraform_remote_state.nonprod.outputs.bastion_private_ip
 }

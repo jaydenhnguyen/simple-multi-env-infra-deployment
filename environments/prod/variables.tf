@@ -18,6 +18,12 @@ variable "vpc_cidr" {
   type        = string
 }
 
+variable "public_subnet_cidrs" {
+  description = "CIDR blocks for public subnets"
+  type        = list(string)
+  default     = []
+}
+
 variable "private_subnet_cidrs" {
   description = "CIDR blocks for private subnets"
   type        = list(string)
@@ -46,4 +52,10 @@ variable "key_name" {
 variable "owner_name" {
   description = "Your name shown on the Apache page"
   type        = string
+}
+
+variable "create_nat_gateway" {
+  description = "Whether to create a NAT gateway"
+  type        = bool
+  default     = false
 }
