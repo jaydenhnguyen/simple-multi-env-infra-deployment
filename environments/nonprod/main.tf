@@ -34,7 +34,7 @@ module "ec2" {
   environment               = var.environment
   vpc_id                    = module.network.vpc_id
   private_subnet_ids        = module.network.private_subnet_ids
-  bastion_security_group_id = module.bastion.bastion_security_group_id
+  bastion_private_ip = module.bastion.bastion_private_ip
 
   ami_id        = var.ami_id
   instance_type = var.instance_type

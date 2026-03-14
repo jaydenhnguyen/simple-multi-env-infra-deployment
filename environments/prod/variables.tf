@@ -47,8 +47,3 @@ variable "owner_name" {
   description = "Your name shown on the Apache page"
   type        = string
 }
-
-variable "bastion_security_group_id" {
-  description = "Security group ID of the nonprod bastion host allowed to SSH into prod VMs"
-  type        = string
-}

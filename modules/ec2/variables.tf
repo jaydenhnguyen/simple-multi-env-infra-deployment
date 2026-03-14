@@ -19,7 +19,7 @@ variable "private_subnet_ids" {
   type        = list(string)
 }
 
-variable "bastion_security_group_id" {
+variable "bastion_private_ip" {
   description = "Security group ID of bastion host allowed to SSH into private VMs"
   type        = string
 }

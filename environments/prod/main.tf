@@ -39,5 +39,5 @@ module "ec2" {
   key_name      = var.key_name
   owner_name    = var.owner_name
 
-  bastion_security_group_id = data.terraform_remote_state.nonprod.outputs.bastion_security_group_id
+  bastion_private_ip = data.terraform_remote_state.nonprod.outputs.bastion_private_ip
 }

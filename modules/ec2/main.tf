@@ -8,7 +8,7 @@ resource "aws_security_group" "private_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    security_groups = [var.bastion_security_group_id]
+    cidr_blocks = ["${var.bastion_private_ip}/32"]
   }
 
   dynamic "ingress" {
@@ -19,7 +19,6 @@ resource "aws_security_group" "private_sg" {
       from_port       = 80
       to_port         = 80
       protocol        = "tcp"
-      security_groups = [var.bastion_security_group_id]
     }
   }
 

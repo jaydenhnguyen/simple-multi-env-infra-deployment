@@ -13,9 +13,9 @@ output "bastion_public_ip" {
   value       = module.bastion.bastion_public_ip
 }
 
-output "bastion_security_group_id" {
-  description = "Security group ID of the bastion host"
-  value       = module.bastion.bastion_security_group_id
+output "bastion_private_ip" {
+  description = "Private IP of the bastion host"
+  value       = module.bastion.bastion_private_ip
 }
 
 output "bastion_ssh_command" {
