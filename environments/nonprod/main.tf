@@ -21,10 +21,10 @@ module "bastion" {
   vpc_id           = module.network.vpc_id
   public_subnet_id = module.network.public_subnet_ids[1]
 
-  ami_id           = var.ami_id
-  instance_type    = var.instance_type
-  key_name         = var.key_name
-  admin_ip       = var.admin_ip
+  ami_id        = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  admin_ip      = var.admin_ip
 }
 
 module "ec2" {
