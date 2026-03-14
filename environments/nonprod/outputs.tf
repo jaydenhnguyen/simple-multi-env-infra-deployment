@@ -1,3 +1,13 @@
+output "vpc_id" {
+  description = "VPC ID of the nonprod environment"
+  value       = module.network.vpc_id
+}
+
+output "private_route_table_id" {
+  description = "Private subnet IDs in nonprod"
+  value       = module.network.public_route_table_id
+}
+
 output "bastion_public_ip" {
   description = "Public IP of the bastion host"
   value       = module.bastion.bastion_public_ip

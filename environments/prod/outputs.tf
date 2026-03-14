@@ -18,6 +18,11 @@ output "prod_private_ips" {
   value       = module.ec2.private_vm_private_ips
 }
 
+output "private_route_table_id" {
+  description = "Private route table ID in prod"
+  value       = module.network.private_route_table_id
+}
+
 output "ssh_vm1_from_bastion" {
   description = "SSH command to connect to prod VM1 from bastion"
   value       = "ssh ec2-user@${module.ec2.private_vm_private_ips[0]}"
