@@ -11,12 +11,16 @@ resource "aws_security_group" "private_sg" {
     security_groups = [var.bastion_security_group_id]
   }
 
-  ingress {
-    description = "Allow HTTP from bastion host"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    security_groups = [var.bastion_security_group_id]
+  dynamic "ingress" {
+    for_each = var.environment == "nonprod" ? [1] : []
+
+    content {
+      description     = "Allow HTTP from bastion host"
+      from_port       = 80
+      to_port         = 80
+      protocol        = "tcp"
+      security_groups = [var.bastion_security_group_id]
+    }
   }
 
   egress {

@@ -3,9 +3,14 @@ output "bastion_public_ip" {
   value       = module.bastion.bastion_public_ip
 }
 
+output "bastion_security_group_id" {
+  description = "Security group ID of the bastion host"
+  value       = module.bastion.bastion_security_group_id
+}
+
 output "bastion_ssh_command" {
   description = "SSH command to connect to bastion from Cloud9"
-  value       = "ssh -i ~/environment/simple-multi-env-infra-deployment/acs730-key ec2-user@${module.bastion.bastion_public_ip}"
+  value       = "ssh -A -i ~/environment/simple-multi-env-infra-deployment/acs730-key ec2-user@${module.bastion.bastion_public_ip}"
 }
 
 output "private_vm_private_ips" {

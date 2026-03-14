@@ -1,0 +1,17 @@
+aws_region = ""
+
+project_name = ""
+environment  = ""
+
+vpc_cidr = ""
+
+private_subnet_cidrs = []
+
+availability_zones = []
+
+ami_id        = ""
+instance_type = ""
+
+key_name = ""
+
+owner_name = ""

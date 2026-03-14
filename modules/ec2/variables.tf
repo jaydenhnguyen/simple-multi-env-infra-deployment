@@ -14,14 +14,14 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "bastion_security_group_id" {
-  description = "Security group ID of bastion host allowed to SSH into private VMs"
-  type        = string
-}
-
 variable "private_subnet_ids" {
   description = "List of private subnet IDs for private instances like VM1 and VM2"
   type        = list(string)
+}
+
+variable "bastion_security_group_id" {
+  description = "Security group ID of bastion host allowed to SSH into private VMs"
+  type        = string
 }
 
 variable "ami_id" {
@@ -36,11 +36,6 @@ variable "instance_type" {
 
 variable "key_name" {
   description = "Name of the EC2 key pair"
-  type        = string
-}
-
-variable "admin_ip" {
-  description = "CIDR block allowed to SSH into bastion host"
   type        = string
 }
 

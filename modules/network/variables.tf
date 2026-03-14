@@ -27,3 +27,15 @@ variable "availability_zones" {
   description = "Availability zones for the subnets"
   type        = list(string)
 }
+
+variable "create_internet_gateway" {
+  description = "Whether to create an internet gateway"
+  type        = bool
+  default     = true
+}
+
+variable "create_nat_gateway" {
+  description = "Whether to create a NAT gateway"
+  type        = bool
+  default     = true
+}

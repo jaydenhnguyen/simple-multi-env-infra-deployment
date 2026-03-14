@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.aws_region
+}
+
 module "network" {
   source = "../../modules/network"
 
@@ -35,6 +39,5 @@ module "ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name
-  admin_ip    = var.admin_ip
   owner_name    = var.owner_name
 }
