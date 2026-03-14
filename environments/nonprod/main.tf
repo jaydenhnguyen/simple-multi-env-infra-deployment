@@ -21,19 +21,19 @@ module "bastion" {
   vpc_id           = module.network.vpc_id
   public_subnet_id = module.network.public_subnet_ids[1]
 
-  ami_id           = var.ami_id
-  instance_type    = var.instance_type
-  key_name         = var.key_name
-  admin_ip       = var.admin_ip
+  ami_id        = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  admin_ip      = var.admin_ip
 }
 
 module "ec2" {
   source = "../../modules/ec2"
 
-  project_name              = var.project_name
-  environment               = var.environment
-  vpc_id                    = module.network.vpc_id
-  private_subnet_ids        = module.network.private_subnet_ids
+  project_name       = var.project_name
+  environment        = var.environment
+  vpc_id             = module.network.vpc_id
+  private_subnet_ids = module.network.private_subnet_ids
   bastion_private_ip = module.bastion.bastion_private_ip
 
   ami_id        = var.ami_id

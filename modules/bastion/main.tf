@@ -1,7 +1,7 @@
 resource "aws_security_group" "this" {
   name        = "${var.project_name}-${var.environment}-bastion-sg"
   description = "Security group for bastion host"
-  vpc_id = var.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "Allow SSH from admin IP"
@@ -27,10 +27,10 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_instance" "this" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = var.key_name
-  subnet_id     = var.public_subnet_id
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  subnet_id              = var.public_subnet_id
   vpc_security_group_ids = [aws_security_group.this.id]
 
   tags = {
