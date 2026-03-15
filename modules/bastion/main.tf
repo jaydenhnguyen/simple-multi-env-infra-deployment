@@ -32,6 +32,7 @@ resource "aws_instance" "this" {
   key_name               = var.key_name
   subnet_id              = var.public_subnet_id
   vpc_security_group_ids = [aws_security_group.this.id]
+  user_data = templatefile("${path.module}/bastion-userdata.sh.tpl", {})
 
   tags = {
     Name        = "${var.project_name}-${var.environment}-bastion"
