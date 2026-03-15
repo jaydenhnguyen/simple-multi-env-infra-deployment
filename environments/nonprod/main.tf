@@ -39,7 +39,6 @@ module "ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name
-  owner_name    = var.owner_name
 
   user_data_list = [
     templatefile("${path.module}/templates/nonprod-userdata.sh.tpl", {
