@@ -39,7 +39,7 @@ module "ec2" {
 
   user_data_list = [
     "",
-    templatefile("${path.module}/templates/prod-userdata.sh.tpl", {})
+    templatefile("${path.module}/prod-userdata.sh.tpl", {})
   ]
 
   bastion_private_ip = data.terraform_remote_state.nonprod.outputs.bastion_private_ip

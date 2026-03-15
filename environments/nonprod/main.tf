@@ -41,12 +41,12 @@ module "ec2" {
   key_name      = var.key_name
 
   user_data_list = [
-    templatefile("${path.module}/templates/nonprod-userdata.sh.tpl", {
+    templatefile("${path.module}/nonprod-userdata.sh.tpl", {
       environment = var.environment
       owner_name  = var.owner_name
       vm_number   = 1
     }),
-    templatefile("${path.module}/templates/nonprod-userdata.sh.tpl", {
+    templatefile("${path.module}/nonprod-userdata.sh.tpl", {
       environment = var.environment
       owner_name  = var.owner_name
       vm_number   = 2
